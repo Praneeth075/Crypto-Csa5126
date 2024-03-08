@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+#include <string.h>
+
+#include <ctype.h>
+
+#define SIZE 5
+
+void prepareKey(char key[], char matrix[SIZE][SIZE])
+
+{ int i, j, k = 0;
+
+int isPresent[26] = {0};
+
+for (i = 0; i < SIZE; i++) {
+
+for (j = 0; j < SIZE; j++) {
+
+if (k < strlen(key)) {
+
+if (!isPresent[key[k] - 'A']) {
+
+matrix[i][j] = key[k];
+
+isPresent[key[k] - 'A'] = 1;
+
+k++;
+
+} else {
+
+j--;
+
+}
+
+} else {
+
+break;
+
+}
+
+}
+
+}
+
+for (i = 0; i < SIZE; i++) {
+
+for (j = 0; j < SIZE; j++) {
+
+if (matrix[i][j] == '\0') {
